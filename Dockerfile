@@ -17,11 +17,8 @@ USER hubot
     
 RUN yo hubot --name=${HUBOT_NAME} --owner=${HUBOT_OWNER} --description=${HUBOT_DESC} --defaults
 
-ADD .
-
 ## Add startup script.                                                                                                                                                                                                                                                                                                                                                                                                                    
 ADD bin/run.sh /app/bin/run.sh                                                                                                                                                                                                                                                                                                                                                                                                            
 RUN chmod 0755 /app/bin/run.sh                                                                                                                                                                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                                                                                                                                                                                          
 ENTRYPOINT ["/app/bin/run.sh"]                                                                                                                                                                                                                                                                                                                                                                                                            
 CMD ["./bin/hubot", "-n", "${HUBOT_NAME}", "-a", "${HUBOT_ADAPTER}"] 
