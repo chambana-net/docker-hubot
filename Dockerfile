@@ -10,10 +10,9 @@ ENV HUBOT_NAME="bot" HUBOT_OWNER="No owner specified." \
 WORKDIR /srv/hubot
 
 RUN useradd -r -m -d /srv/hubot hubot && \
-    npm install -g yo generator-hubot@1.1.0
-
-RUN mkdir -p /root/.config/configstore && \
-    chmod g+rwx /root /root/.config /root/.config/configstore && \
+    mkdir -p /root/.config/configstore && \
+    chmod -R g+rwX /root /root/.config /root/.config/configstore && \
+    npm install -g yo generator-hubot@1.1.0 && \
     yo hubot --name=${HUBOT_NAME} --owner=${HUBOT_OWNER} --description=${HUBOT_DESC} --defaults && \
     chown -R hubot:hubot /srv/hubot
 
