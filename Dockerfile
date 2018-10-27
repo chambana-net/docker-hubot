@@ -13,7 +13,7 @@ ADD bin/run.sh /app/bin/run.sh
 RUN useradd -m -d /srv/hubot hubot && \
     chmod 0755 /app/bin/run.sh && \
     npm install -g yo generator-hubot@1.1.0 && \
-    chown -R hubot:hubot /srv/hubot /tmp/npm-cache
+    chown -R hubot:hubot /srv/hubot
 
 USER hubot:hubot
 
