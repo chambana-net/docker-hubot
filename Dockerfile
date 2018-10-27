@@ -6,11 +6,11 @@ ENV HUBOT_NAME="bot" HUBOT_OWNER="No owner specified." \
     HUBOT_DESC="A simple helpful robot." \
     HUBOT_SCRIPTS=hubot-diagnostics,hubot-help HUBOT_ADAPTER=shell \
     NODE_ENV=production XDG_CONFIG_HOME=/srv/hubot/.config \
-    npm_config_cache=/tmp/npm-cache
+    npm_config_cache=/srv/hubot/.npm
 
 ## Add startup script.                                                                                                                                                                                                                                                                                                                                                                                                                    
 ADD bin/run.sh /app/bin/run.sh                                                                                                                                                                                                                                                                                                                                                                                                            
-RUN useradd -r -m -d /srv/hubot hubot && \
+RUN useradd -m -d /srv/hubot hubot && \
     chmod 0755 /app/bin/run.sh && \
     npm install -g yo generator-hubot@1.1.0 && \
     chown -R hubot:hubot /srv/hubot /tmp/npm-cache
