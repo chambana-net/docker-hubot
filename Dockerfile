@@ -12,14 +12,14 @@ WORKDIR /srv/hubot
 RUN useradd -r -m -d /srv/hubot hubot && \
     npm install -g yo generator-hubot@1.1.0
 
-RUN yo hubot --name=${HUBOT_NAME} --owner=${HUBOT_OWNER} --description=${HUBOT_DESC} --defaults && \
+RUN mkdir -p /root/.config/configstore && \
+    chmod g+rwx /root /root/.config /root/.config/configstore && \
+    yo hubot --name=${HUBOT_NAME} --owner=${HUBOT_OWNER} --description=${HUBOT_DESC} --defaults && \
     chown -R hubot:hubot /srv/hubot
-
 
 ## Add startup script.                                                                                                                                                                                                                                                                                                                                                                                                                    
 ADD bin/run.sh /app/bin/run.sh                                                                                                                                                                                                                                                                                                                                                                                                            
 RUN chmod 0755 /app/bin/run.sh                                                                                                                                                                                                                                                                                                                                                                                                            
-
 USER hubot
 
 ENTRYPOINT ["/app/bin/run.sh"]                                                                                                                                                                                                                                                                                                                                                                                                            
