@@ -5,8 +5,8 @@ MAINTAINER Josh King <jking@chambana.net>
 ENV HUBOT_NAME="bot" HUBOT_OWNER="No owner specified." \
     HUBOT_DESC="A simple helpful robot." \
     HUBOT_SCRIPTS=hubot-diagnostics,hubot-help HUBOT_ADAPTER=shell \
-    NODE_ENV=production XDG_CONFIG_HOME=/srv/hubot/.config \
-    npm_config_cache=/srv/hubot/.npm
+    NODE_ENV=production XDG_CONFIG_HOME=/srv/hubot/.config HOME=/srv/hubot \
+    npm_config_cache=/srv/hubot/.npm npm_config_devdir=/srv/hubot/.node-gyp
 
 ## Add startup script.                                                                                                                                                                                                                                                                                                                                                                                                                    
 ADD bin/run.sh /app/bin/run.sh                                                                                                                                                                                                                                                                                                                                                                                                            
