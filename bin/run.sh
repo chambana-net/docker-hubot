@@ -13,7 +13,7 @@ CHECK_VAR NODE_ENV
 MSG "Configuring Hubot..."
 node -e "console.log(JSON.stringify('$HUBOT_EXTERNAL_SCRIPTS'.split(',')))" > external-scripts.json
 npm install $(node -e "console.log('$HUBOT_EXTERNAL_SCRIPTS'.split(',').join(' '))")
-if [[ "$HUBOT_ADAPTER" != "campfire" ]] && [["$HUBOT_ADAPTER" != "shell" ]]; then
+if [[ "$HUBOT_ADAPTER" != "campfire" ]] && [[ "$HUBOT_ADAPTER" != "shell" ]]; then
   npm install $(node -e "console.log('$HUBOT_ADAPTER'.startsWith('hubot-') ? '$HUBOT_ADAPTER' : 'hubot-'.concat('$HUBOT_ADAPTER'))")
 fi
 export HUBOT_ADAPTER=$(node -e "console.log('$HUBOT_ADAPTER'.startsWith('hubot-') ? '$HUBOT_ADAPTER'.slice('hubot-'.length) : '$HUBOT_ADAPTER')")
